@@ -1,7 +1,10 @@
-use std::fs;
+use std::{fs, time::Instant};
 
 fn main() {
+    let start = Instant::now();
     part2();
+    let duration = start.elapsed();
+    println!("\nDuration: {:?}", duration);
 }
 
 pub fn part1() {
@@ -94,13 +97,6 @@ fn is_number_repeating(input: i64) -> bool {
 
     if input_string.len() < 2 {
         return false;
-    }
-
-    let first = input_string.chars().next().expect("input was empty");
-
-    let mut chars = input_string.chars();
-    if chars.all(|c| c == first) {
-        return true;
     }
 
     let half_length = input_string.len() / 2;
